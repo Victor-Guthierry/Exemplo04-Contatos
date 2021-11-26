@@ -27,8 +27,10 @@ public class ContatoController {
 	private GrupoService grupoService;
 
 	@GetMapping("/exibirContato")
-	public String exibirForm(Contato contato) {
-		return "contatos-form";
+	public String exibirForm(Contato contato, Model model) {
+	//	model.addAttribute("lista", grupoService.grupoValido(grupos));
+		model.addAttribute("lista", grupos);
+		return "contatos-form"; 
 	}
 	
 	@GetMapping("/novogrupo")
@@ -80,6 +82,20 @@ public class ContatoController {
 		return "redirect:/listarContatos";
 	}
 	
+	@GetMapping("/removerGrupo")
+	public String removerGrupo(String nome) {
+		Grupo grupoParaRemover = null;
+		for(Grupo grupo : this.grupos) {
+			if(grupo.getNome().equals(nome)) {
+				grupoParaRemover = grupo;
+			}
+		}
+		if (grupoParaRemover != null) {
+			this.grupos.remove(grupoParaRemover);
+		}
+		return "redirect:/listarGrupos";
+	}
+	
 	@GetMapping("/editarContato")
 	public String editarContato(String email, Model model) {
 		Contato contatoParaEditar = null;
@@ -90,5 +106,17 @@ public class ContatoController {
 		}
 		model.addAttribute("contato", contatoParaEditar);
 		return "contatos-form";
+	}
+	
+	@GetMapping("/editarGrupo")
+	public String editarGrupo(String nome, Model model) {
+		Grupo grupoParaEditar = null;
+		for(Grupo grup : this.grupos) {
+			if(grup.getNome().equals(nome)) {
+				grupoParaEditar = grup;
+			}
+		}
+		model.addAttribute("grupo", grupoParaEditar);
+		return "novo-grupo";
 	}
 }

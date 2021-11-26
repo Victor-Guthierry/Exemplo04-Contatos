@@ -47,15 +47,14 @@
 					th:field="*{apps}" th:value="Slack" />
 					<label class="form-check-label">Slack</label>
 			</div>
-			<div class="form-group form-check">
-				<label for="apps">Grupo</label><Br/>
-					<input type="radio" class="form-check-input"
-					th:field="*{grupo}" th:value="F" />
-					<label class="form-check-label">Família</label>
-					<input type="radio" class="form-check-input" th:field="*{grupo}" th:value="T" />
-					<label class="form-check-label">Trabalho</label>
-					<input type="radio" class="form-check-input" th:field="*{grupo}" th:value="A" />
-					<label class="form-check-label">Amigos</label> 
+			<div class="form-group ">
+				<label>Grupo</label>
+				<select>
+					<option></option>
+					<tr th:each="grupo : ${lista}">
+					<option th:text="${grupo.nome}"></option>
+					</tr>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="data">Data de Nascimento</label> <input type="date" class="form-control"

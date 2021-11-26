@@ -30,6 +30,9 @@
 				<td th:text="${grupo.nome}"></td>
 				<td th:text="${grupo.visibilidade}"></td>
 				<td th:text="${grupo.dataExpiracao}"></td>
+				<td><a th:href="@{/editarGrupo(nome=${grupo.nome})}">Editar</a>&nbsp;&nbsp;
+					<a th:href="@{/removerGrupo(nome=${grupo.nome})}">Remover</a></td>
+					<!-- http://localhost:8080/removerContato?email=gloria.maria@gmail.com -->
 			</tr>
 		</table>
 <a class="btn btn-primary" href="/novogrupo">Novo Grupo</a>
