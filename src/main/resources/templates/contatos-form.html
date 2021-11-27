@@ -49,10 +49,10 @@
 			</div>
 			<div class="form-group ">
 				<label>Grupo</label>
-				<select>
-					<option></option>
+				<select class="form-control" id="grupo" th:field="*{grupo}">
+					<option th:value="''"></option>
 					<tr th:each="grupo : ${lista}">
-					<option th:text="${grupo.nome}"></option>
+					<option th:text="${grupo.nome}" th:value="grupo"></option>
 					</tr>
 				</select>
 			</div>

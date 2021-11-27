@@ -105,6 +105,7 @@ public class ContatoController {
 			}
 		}
 		model.addAttribute("contato", contatoParaEditar);
+		model.addAttribute("lista", grupos);
 		return "contatos-form";
 	}
 	
